@@ -675,6 +675,6 @@ button, select {
   margin-top: 1.6rem;
 }
 
-#username {
+#username, #password {
   color: var(--darkest);
 }
