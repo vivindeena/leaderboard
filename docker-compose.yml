@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+
+  db:
+    image: postgres:alpine
+    container_name: my_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgresDB_data:/var/lib/postgresql/data
+    
+  leaderboard:
+    image: vivindeena/leaderboard-backend:1.0
+    env_file:
+      - ./.env
+    environment:
+      - PORT=7099
+    ports:
+      - "7099:7099"
+
+
+volumes:
+  postgresDB_data:

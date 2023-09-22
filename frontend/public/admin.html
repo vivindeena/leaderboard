@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Space Race</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="l-wrapper">
+        <div class="c-header">
+            <img class="c-logo" src="./images/logo.png" draggable="false" />
+        </div>
+        <div class="l-grid__item">
+            <div class="c-card">
+                <div class="c-card__header">
+                    <h3>LOGIN</h3>
+                </div>
+                <div class="c-card__body" >
+                    <!-- Login Form -->
+                    <form id="loginForm" class="c-form">
+                        <div class="c-form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="c-form-group c-form-group--center">
+                            <button class="c-button c-button--primary" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script defer>
+        const form = document.getElementById("loginForm");
+        const uname = document.getElementById("username");
+        const pass = document.getElementById("password");
+        form.addEventListener("submit", async (e) =>{
+            e.preventDefault();
+            let result = await axios.post("http://localhost:7099/admin/login",{"user": uname.value, "password": pass.value})
+            
+        });
+        
+    </script>
+</body>
+</html>

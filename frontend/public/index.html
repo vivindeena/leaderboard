@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
 </head>
 <body>
     <div class="l-wrapper">
@@ -32,6 +34,16 @@
             </div>
 
     </div>
-    <script src="./script.js" defer></script>
+    <script defer>
+        const user = localStorage.getItem("currentUser");
+        if (!user) {
+            window.location.href = "http://localhost:3000/login.html";
+        }
+        addDetails(user);
+        setInterval(async () => {
+            addDetails(user);
+            console.log("refreshed");
+        }, 5000);
+    </script>
 </body>
 </html>

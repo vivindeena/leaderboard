@@ -13,7 +13,18 @@ router.post("/getProfile", async (req, res)=>{
     }
 });
 router.post("/updateProfile", userController.updateProfile);
-router.get("/getBoard", userController.getProfile);
+
+router.get("/getBoard", async (req, res) => {
+    try {
+        await userController.getLeaderboards(req, res);
+    } catch (err) {
+        console.error('Error:', err);
+        return res.status(500).json({
+            message: 'Database Connection Error',
+            error: err,
+        });
+    }
+});
 
 router.get("/", (req, res) => {
     return res.status(200).json({

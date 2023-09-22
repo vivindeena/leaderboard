@@ -80,26 +80,29 @@ const team = [
         points: 1,
     },
 ];
-const CURRENT_USER = "23MIS";
-addDetails(team);
 
+const getDetails =  async() => {
+    let result = await axios.get("http://localhost:7099/user/getBoard")
+    return result;
+}
 
-function addDetails(board) {
+async function addDetails(currentUser) {
+    let rank = 1;
+    let {data} = await getDetails();
+    let board = data.result;
 	board.forEach((member) => {
         let newRow = document.createElement("li");
-        if (member.id === CURRENT_USER) {
+        if (member.reg_no === currentUser) {
             newRow.classList = "c-list__item highlight";
         } else {
             newRow.classList = "c-list__item";
         }
         newRow.innerHTML = `
 		<div class="c-list__grid">
-			<div class="c-flag c-place u-bg--transparent">${member.rank}</div>
+			<div class="c-flag c-place u-bg--transparent">${rank}</div>
 			<div class="c-media">
-				
 				<div class="c-media__content">
 					<div class="c-media__title">${member.name}</div>
-					<a>@${member.handle}</a>
 				</div>
 			</div>
 			<div class="u-text--right c-points">
@@ -109,20 +112,21 @@ function addDetails(board) {
 			</div>
 		</div>
 	`;
-        if (member.rank === 1) {
+        if (rank === 1) {
             newRow.querySelector(".c-place").classList.add("u-text--dark");
             newRow.querySelector(".c-place").classList.add("u-bg--yellow");
             newRow.querySelector(".c-points").classList.add("u-text--yellow");
-        } else if (member.rank === 2) {
+        } else if (rank === 2) {
             newRow.querySelector(".c-place").classList.add("u-text--dark");
             newRow.querySelector(".c-place").classList.add("u-bg--teal");
             newRow.querySelector(".c-points").classList.add("u-text--teal");
-        } else if (member.rank === 3) {
+        } else if (rank === 3) {
             newRow.querySelector(".c-place").classList.add("u-text--dark");
             newRow.querySelector(".c-place").classList.add("u-bg--orange");
             newRow.querySelector(".c-points").classList.add("u-text--orange");
         }
         list.appendChild(newRow);
+        rank++;
     });
 }
 
