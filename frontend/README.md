@@ -1,12 +1,8 @@
 Task List
-
 - [X] Leaderboard Basic front end 
 
-
 User Side
-
-- [ ]  Login
+- [X]  Login
 
 Admin Side
-
-- [ ] Update points
+- [X] Update points

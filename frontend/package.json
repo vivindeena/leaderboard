@@ -5,9 +5,9 @@
     "main": "index.js",
     "scripts": {
         "compile": "sass --no-source-map --quiet ./assets/sass/style.scss ./public/style.css",
-        "start": "npm run compile && node index.js",
+        "start": "node index.js",
         "dev": "nodemon -e html,scss,js --exec 'npm run test'",
-        "test": "npm run compile && node index.js"
+        "build": "npm i && npm run compile"
     },
     "author": "",
     "license": "ISC",
