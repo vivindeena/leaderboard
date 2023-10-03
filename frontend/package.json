@@ -1,7 +1,7 @@
 {
     "name": "leaderboard-example",
     "version": "1.0.0",
-    "description": "A Pen created on CodePen.io. Original URL: [https://codepen.io/ryanparag/pen/ZEGLqGW](https://codepen.io/ryanparag/pen/ZEGLqGW).",
+    "description": "",
     "main": "index.js",
     "scripts": {
         "compile": "sass --no-source-map --quiet ./assets/sass/style.scss ./public/style.css",
