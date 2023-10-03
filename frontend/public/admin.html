@@ -56,9 +56,9 @@
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://localhost:7099/admin/put_score',
+                url: `${BACKEND_URL}/admin/put_score`,
                 headers: { 
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNjk1MzcxODg5fQ.UJrS18oFB5v_fKU-ZS_igsDqE0NXkaKCWlDSdvAd0Gs', 
+                    'Authorization': 'Bearer '+ localStorage.getItem("token"),, 
                     'Content-Type': 'application/json'
                 },
                 data : data

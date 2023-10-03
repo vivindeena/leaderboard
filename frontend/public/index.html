@@ -37,7 +37,7 @@
     <script defer>
         const user = localStorage.getItem("currentUser");
         if (!user) {
-            window.location.href = "http://localhost:3000/login.html";
+            window.location.href = `${window. location. origin}/login.html`;
         }
         addDetails(user);
         setInterval(async () => {

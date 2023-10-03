@@ -41,7 +41,7 @@
         form.addEventListener("submit", async (e) =>{
             let valid = false;
             e.preventDefault();
-            let result = await axios.post("http://localhost:7099/user/getProfile",{reg_no: uname.value})
+            let result = await axios.post(`${BACKEND_URL}/user/getProfile`,{reg_no: uname.value})
             .then((data)=>{
                 if(data.data.length == 0){
                     valid = false;
